@@ -101,7 +101,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = now(),
+        now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -116,29 +116,4 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="selectCategoryChildrenByParentId" resultMap="BaseResultMap" parameterType="int">
-    select
-    <include refid="Base_Column_List"/>
-    from mmall_category
-    where parent_id = #{parentId}
-  </select>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </mapper>
