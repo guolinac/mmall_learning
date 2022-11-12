@@ -265,6 +265,20 @@ public class UserServiceImpl implements IUserService {
         // 将user对象中的密码置空，保证安全性
         user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
         return ServerResponse.createBySuccess(user);
+    }
 
+
+    //backend
+
+    /**
+     * 校验对象是否是管理员
+     * @param user
+     * @return
+     */
+    public ServerResponse checkAdminRole(User user) {
+        if(user != null && user.getRole().intValue() == Const.Role.ROLE_ADMIN) {
+            return ServerResponse.createBySuccess();
+        }
+        return ServerResponse.createByError();
     }
 }
