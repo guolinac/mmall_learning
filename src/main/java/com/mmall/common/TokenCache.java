@@ -3,18 +3,15 @@ package com.mmall.common;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by guolin
  */
+@Slf4j
 public class TokenCache {
-
-    // 调试日志，使用指定类初始化日志对象，在日志输出的时候，可以打印出日志信息所在类
-    private static Logger logger = LoggerFactory.getLogger(TokenCache.class);
 
     public static final String TOKEN_PREFIX = "token_";
 
@@ -41,7 +38,7 @@ public class TokenCache {
             }
             return value;
         } catch (Exception e) {
-            logger.error("localCache get error", e);
+            log.error("localCache get error", e);
         }
         return null;
     }
