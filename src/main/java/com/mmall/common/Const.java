@@ -15,6 +15,8 @@ public class Const {
 
     public static final String USERNAME = "username";
 
+    public static final String TOKEN_PREFIX = "token_";
+
     /**
      * redis数据过期时间
      */
