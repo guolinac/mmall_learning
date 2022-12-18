@@ -24,13 +24,13 @@ public class JsonUtil {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
     static{
-        // 对象的所有字段全部列入
+        // 对象的所有字段全部列入，就算是空，也会把null放在string里面展示出来
         objectMapper.setSerializationInclusion(JsonSerialize.Inclusion.ALWAYS);
 
-        // 取消默认转换timestamps形式
+        // 取消默认转换timestamps形式，如果是true的话，就会把时间转换为毫秒的时间戳形式，也就是1970-1-1到这个时间的毫秒数
         objectMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,false);
 
-        // 忽略空Bean转json的错误
+        // 忽略空Bean转json的错误，没有赋予属性值的对象也可以转化为空json，不会出错
         objectMapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS,false);
 
         // 所有的日期格式都统一为以下的样式，即yyyy-MM-dd HH:mm:ss
