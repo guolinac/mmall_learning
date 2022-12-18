@@ -16,6 +16,13 @@ public class Const {
     public static final String USERNAME = "username";
 
     /**
+     * redis数据过期时间
+     */
+    public interface RedisCacheExtime{
+        int REDIS_SESSION_EXTIME = 60 * 30;//30分钟
+    }
+
+    /**
      * 升序/降序
      */
     public interface ProductListOrderBy{
