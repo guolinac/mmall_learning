@@ -7,7 +7,7 @@ import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
-import com.mmall.util.RedisPoolUtil;
+import com.mmall.util.RedisShardedPoolUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,7 +50,7 @@ public class UserController {
             CookieUtil.writeLoginToken(httpServletResponse,session.getId());
 
             // 把Token和用户信息的字符串存入redis
-            RedisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
+            RedisShardedPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }
         return response;
     }
@@ -73,7 +73,7 @@ public class UserController {
         CookieUtil.delLoginToken(httpServletRequest,httpServletResponse);
 
         // 删除redis中的Token
-        RedisPoolUtil.del(loginToken);
+        RedisShardedPoolUtil.del(loginToken);
         return ServerResponse.createBySuccess();
     }
 
@@ -118,7 +118,7 @@ public class UserController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -191,7 +191,7 @@ public class UserController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -223,7 +223,7 @@ public class UserController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User currentUser = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -242,7 +242,7 @@ public class UserController {
 //            session.setAttribute(Const.CURRENT_USER, response.getData());
 
             // 把Token和用户信息的字符串存入redis
-            RedisPoolUtil.setEx(loginToken, JsonUtil.obj2String(response.getData()),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
+            RedisShardedPoolUtil.setEx(loginToken, JsonUtil.obj2String(response.getData()),Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
         }
         return response;
     }
@@ -266,7 +266,7 @@ public class UserController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User currentUser = JsonUtil.string2Obj(userJsonStr,User.class);

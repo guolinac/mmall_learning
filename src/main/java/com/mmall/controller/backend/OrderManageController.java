@@ -1,7 +1,6 @@
 package com.mmall.controller.backend;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.Const;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.pojo.User;
@@ -9,7 +8,7 @@ import com.mmall.service.IOrderService;
 import com.mmall.service.IUserService;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
-import com.mmall.util.RedisPoolUtil;
+import com.mmall.util.RedisShardedPoolUtil;
 import com.mmall.vo.OrderVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by guolin
@@ -57,7 +55,7 @@ public class OrderManageController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -95,7 +93,7 @@ public class OrderManageController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -136,7 +134,7 @@ public class OrderManageController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -174,7 +172,7 @@ public class OrderManageController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);

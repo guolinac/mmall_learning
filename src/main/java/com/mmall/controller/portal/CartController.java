@@ -8,7 +8,7 @@ import com.mmall.pojo.User;
 import com.mmall.service.ICartService;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
-import com.mmall.util.RedisPoolUtil;
+import com.mmall.util.RedisShardedPoolUtil;
 import com.mmall.vo.CartVo;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -51,7 +51,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -84,7 +84,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -117,7 +117,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -148,7 +148,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -178,7 +178,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -208,7 +208,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -239,7 +239,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -270,7 +270,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
@@ -300,7 +300,7 @@ public class CartController {
         }
 
         // 通过Token拿到用户信息
-        String userJsonStr = RedisPoolUtil.get(loginToken);
+        String userJsonStr = RedisShardedPoolUtil.get(loginToken);
 
         // 把用户信息的字符串转成User对象
         User user = JsonUtil.string2Obj(userJsonStr,User.class);
